@@ -1,0 +1,2 @@
+class LinkSpecialty < ApplicationRecord
+end
