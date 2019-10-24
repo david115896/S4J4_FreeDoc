@@ -1,0 +1,26 @@
+local:
+  faker:
+    doctor:
+      # New faker fields
+      specialty:
+        - Addiction psychiatrist
+	- Adolescent medicine specialist
+	- Allergist (immunologist)
+	- Anesthesiologist
+	- Cardiac electrophysiologist
+	- Cardiologist
+	- Cardiovascular surgeon
+	- Colon and rectal surgeon
+	- Critical care medicine specialist
+	- Dermatologist
+	- Developmental pediatrician
+	- Emergency medicine specialist
+	- Endocrinologist
+	- Family medicine physician
+	- Forensic pathologist
+	- Gastroenterologist
+	- Geriatric medicine specialist
+	- Gynecologist
+	- Gynecologic oncologist
+	- Hand surgeon
+	- Hematologist
