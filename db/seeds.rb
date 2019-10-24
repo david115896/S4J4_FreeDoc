@@ -13,23 +13,23 @@ require 'faker'
 specialty_array = ["Addiction psychiatrist","Adolescent medicine specialist","Allergist (immunologist)","Anesthesiologist","Cardiac electrophysiologist","Cardiologist","Cardiovascular surgeon","Colon and rectal surgeon","Critical care medicine specialist","Dermatologist","Developmental pediatrician","Emergency medicine specialist","Endocrinologist","Family medicine physician","Forensic pathologist","Gastroenterologist","Geriatric medicine specialist","Gynecologist","Gynecologic oncologist","Hand surgeon","Hematologist"]
 
 
-#20.times do |num|
-#	spe = Specialty.create!(name: specialty_array[num])
-#end
-#
-#20.times do 
-#	city = City.create!(zip_code: Faker::Address.zip)
-#end
+20.times do |num|
+	spe = Specialty.create!(name: specialty_array[num])
+end
+
+20.times do 
+	city = City.create!(zip_code: Faker::Address.zip)
+end
 
 100.times do |index|
 	
-	doc = Doctor.create!(first_name: "Dr. #{Faker::Name.first_name}", last_name: Faker::Name.last_name, city_id: City.all.sample.id)
-	pat = Patient.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, city_id: City.all.sample.id)
+	doc = Doctor.create!(first_name: "Dr. #{Faker::Name.first_name}", last_name: Faker::Name.last_name, city: City.all.sample)
+	pat = Patient.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, city: City.all.sample)
 	
 	3.times do 
-		spe = LinkSpecialties.create(doctor: doc.id, specialty: Specialty.all.sample.id)
+		spe = LinkSpecialty.create(doctor: doc, specialty: Specialty.all.sample)
 	end
-	app = Appointment.create(doctor: doc.id, patient: Patient.all.sample.id, date: Faker::Date.forward(days: 23), city: doc.city_id, specialty: LinkSpecialty.where(doctor_id: doc.id).sample.specialty.id)
+	app = Appointment.create(doctor: doc, patient: Patient.all.sample, city: doc.city, specialty: LinkSpecialty.where(doctor: doc).sample.specialty, date: Faker::Time.forward(days: 23))
 end
 
 
